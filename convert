@@ -1,0 +1,15 @@
+function rep() {
+    var embeds = document.getElementsByTagName('embed');
+    for (var i = 0; i < embeds.length; i++) {
+        if (id = embeds[i].src.match(/http:\/\/player.youku.com\/player.php\/sid\/(\w+)\/v.swf/)) {
+            var iframe = document.createElement('iframe');
+            iframe.height = embeds[i].height;
+            iframe.width = embeds[i].width;
+            iframe.frameBorder = 0;
+            iframe.src = "http://player.youku.com/embed/" + id[1];
+            parent = embeds[i].parentNode;
+            parent.insertBefore(iframe, embeds[i]);
+            parent.removeChild(embeds[i]);
+        }
+    }
+}
